@@ -1,0 +1,26 @@
+[Unit]
+Description=Luq Server API
+After=network.target
+
+[Service]
+Type=simple
+User=luquser
+WorkingDirectory=/opt/luq-server/build
+
+# Executa o serviço
+ExecStart=/opt/luq-server/build/luq-server
+
+Restart=on-failure
+RestartSec=5
+Environment=PORT=18080
+
+# Redireciona stdout/stderr para o journal
+StandardOutput=append:/var/log/luq-server.log
+StandardError=inherit
+
+# Limites opcionais
+MemoryMax=512M
+CPUQuota=50%
+
+[Install]
+WantedBy=multi-user.target
