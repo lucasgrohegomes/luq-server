@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+    <head>
+        <meta charset="UTF-8">
+        <title>Registro Luquistico</title>
+        <!-- Tailwind -->
+        <link href="/css/output.css" rel="stylesheet">
+        <!-- HTMX -->
+        <script src="https://cdn.jsdelivr.net/npm/htmx.org@2.0.7/dist/htmx.min.js"></script>
+    </head>
+
+    <!-- BODY -->
+    <body class="min-h-screen flex flex-col">
+
+        <!-- HEADER (HTMX) -->
+        <div    hx-get="/partials/navbar.html"
+                hx-trigger="load"
+                hx-swap="outerHTML"></div>
+
+        <!-- MAIN -->
+        <main class="flex-grow">
+            <!-- DIV que conterá o formulário de cadastro. (HTMX)-->
+            <section class="bg-white rounded-lg shadow-md p-6" 
+                     id="conteudo"
+                     hx-get="/api/teste"
+                     hx-trigger="load"
+                     hx-target="#conteudo"
+                     hx-swap="beforeend">
+            </section>
+        </main>
+
+        <!-- FOOTER (HTMX) -->
+        <div    hx-get="/partials/footer.html"
+                hx-trigger="load"
+                hx-swap="outerHTML"></div>
+    </body>
+</html>
